@@ -26,13 +26,18 @@ class Interview(models.Model):
     interviewer = models.CharField(max_length=100)
     evaluation = models.TextField()
     conclusion = models.TextField()
+from django.db import models
+
 class Employee(models.Model):
-    full_name = models.CharField(max_length=100)
-    position = models.CharField(max_length=100)
-    department = models.CharField(max_length=100)
-    hire_date = models.DateField()
-    mentor = models.CharField(max_length=100)
-    contact_details = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100, verbose_name="Полное имя")
+    position = models.CharField(max_length=100, verbose_name="Должность")
+    department = models.CharField(max_length=100, verbose_name="Отдел")
+    hire_date = models.DateField(verbose_name="Дата приема на работу")
+    mentor = models.CharField(max_length=100, verbose_name="Наставник")
+    contact_details = models.CharField(max_length=100, verbose_name="Контактные данные")
+
+    def __str__(self):
+        return self.full_name
 
 class AdaptationProgram(models.Model):
     name = models.CharField(max_length=100)
